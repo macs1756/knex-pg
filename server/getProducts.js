@@ -1,16 +1,21 @@
 const express = require('express');
+const { knex } = require('../knex');
 const router = express.Router();
 
-// Mock data for to-dos
-const todos = [
-  { id: 1, task: 'Buy groceries', completed: false },
-  { id: 2, task: 'Clean the house', completed: true },
-  { id: 3, task: 'Pay bills', completed: false }
-];
+const getProducts = async () => {
+  try {
+    const products = await knex("products")
+      .select("id", "name")
+      .limit(20);
+    return products
+  } catch (error) {
+    console.error("Error fetching products:", error);
+  }
+};
 
 // Endpoint to get all to-dos
-router.get('/', (req, res) => {
-  res.json(todos);
+router.get('/', async (req, res) => {
+  res.json(await getProducts());
 });
 
 module.exports = router;
