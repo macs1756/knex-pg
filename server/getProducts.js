@@ -13,7 +13,7 @@ const getProducts = async () => {
   }
 };
 
-// Endpoint to get all to-dos
+
 router.get('/', async (req, res) => {
   res.json(await getProducts());
 });

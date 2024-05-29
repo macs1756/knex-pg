@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <title>Catalog Products</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <main>
-      <div id="products">new test</div>
+      <div id="products"></div>
     </main>
 
     <script>
@@ -20,10 +20,7 @@
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const products = await response.json();
-
         const productsWrapper = document.querySelector("#products");
-
-        console.log(products);
 
         const productsTags = products.map((e) => {
           return `<a href="my-product/${e.id}">${e.name}</a>`;

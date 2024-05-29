@@ -2,5 +2,10 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: green;
+  padding: 50px;
+}
+
+a{
+  display: block;
+  text-decoration: none;
 }
