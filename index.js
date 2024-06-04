@@ -15,10 +15,16 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'template', 'index.html'));
 });
 
+app.get('/products/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'template', 'singleProducts.html'));
+})
+
 
 app.use('/api/products', getProducts);
 
 app.use('/api/products/:id', getProductsById)
+
+
 
 
 app.listen(port, () => {
