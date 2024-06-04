@@ -14,7 +14,7 @@
 
     <script>
       const fetchProductsHtml = async () => {
-        const response = await fetch("http://localhost:3000/products");
+        const response = await fetch("http://localhost:3000/api/products");
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -23,7 +23,7 @@
         const productsWrapper = document.querySelector("#products");
 
         const productsTags = products.map((e) => {
-          return `<a href="my-product/${e.id}">${e.name}</a>`;
+          return `<a href="products/${e.id}">${e.name}</a>`;
         });
         productsWrapper.innerHTML = productsTags;
       };
