@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Single Product</title>
-   <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Product</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
     single product
 
-
-
     <script>
-      
+      const url = window.location.href.split("/");
+
+      const lastRoute = url[url.length - 1];
+
+      const id = lastRoute === "" ? url[url.length - 2] : lastRoute;
+
+      const getProduct = async (id) => {
+        const response = await fetch(
+          `http://localhost:3000/api/products/${id}`
+        );
+
+        if (response.status !== 200) {
+          throw new Error("Error on side server");
+        }
+
+        const product = await response.json();
+
+        console.log(product);
+      };
+
+      getProduct(id);
+
+      console.log(id);
     </script>
-</body>
+  </body>
 </html>

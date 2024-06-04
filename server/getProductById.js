@@ -6,8 +6,7 @@ const getProductsById = async (id) => {
   try {
     const products = await knex("products")
       .select("id", "name")
-      .where({ id })
-      .limit(20);
+      .where({ id });
     return products
   } catch (error) {
     console.error("Error fetching products:", error);
